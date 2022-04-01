@@ -1,0 +1,4 @@
+
+<% if @articles.errors.any? %>
+alert("ERROR(S):\n<%= j @post.errors.full_messages.join("\n") %>")
+<%end%>

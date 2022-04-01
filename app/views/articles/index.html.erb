@@ -1,0 +1,56 @@
+<center><%= link_to "New Article", new_article_path,data: {bs_toggle: 'modal',bs_target:"#rkModal", remote: true }%></center>
+<table class="table table-boardered">
+  <thead>
+    <tr>
+      <th>title</th> 
+    </tr>  
+  </thead>  
+
+  <tbody  id="articleTable">
+    <% @articles.each do |article| %>
+    <%= render 'article_row', article: article %>
+  <% end %>
+  </tbody>
+</table>
+<!-- Button trigger modal -->
+<!-- Modal -->
+
+<div class="modal fade" id="rkModal" tabindex="-1" aria-labelledby="rkModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="rkModal">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+     <%= form_with(model: @article, url: articles_path, method: :post ,local: false) do |form| %>
+             <%= form.label :title%><br>
+             <%= form.text_field :title%><br>
+             
+             <%= form.label :description%><br>
+             <%= form.text_field :description%><br>
+             
+             <%= form.submit 'submit' %>
+
+         <%end%>
+     
+
+
+<div class="modal fade" id="pkModal" tabindex="-1" aria-labelledby="pkModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="pkModal">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+    <%= form_with url: "/articles/:id",local: false, method: :patch do |form| %>
+             <%= form.label :title%><br>
+             <%= form.text_field :title%><br>
+             
+             <%= form.label :description%><br>
+             <%= form.text_field :description%><br>
+             
+             <%= form.submit 'submit' %>
+
+         <%end%>
