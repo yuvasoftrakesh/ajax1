@@ -6,7 +6,7 @@
     </tr>  
   </thead>  
 
-  <tbody  id="articleTable">
+  <tbody>
     <% @articles.each do |article| %>
     <%= render 'article_row', article: article %>
   <% end %>
@@ -33,7 +33,7 @@
              
              <%= form.submit 'submit' %>
 
-      <%end%>
+     <%end%>
      
 
 
@@ -54,4 +54,4 @@
              
              <%= form.submit 'submit' %>
 
-         <%end%>
+     <%end%>
